@@ -49,7 +49,9 @@ return [
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => '',
+            //给env添加表前缀
+            'prefix' => env('DB_PREFIX',''),
+            //严格模式
             'strict' => true,
             'engine' => null,
         ],

@@ -1,5 +1,4 @@
 <?php
-use Illuminate\Support\Facades\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,3 +81,6 @@ Route::get('index','HtmlController@index');
 
 // 视图继承
 Route::get('ext','HtmlController@extend');
+
+//数据库
+Route::get('db','DbController@db')->name('db');
