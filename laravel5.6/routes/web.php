@@ -83,4 +83,7 @@ Route::get('index','HtmlController@index');
 Route::get('ext','HtmlController@extend');
 
 //数据库
-Route::get('db','DbController@db')->name('db');
+// Route::get('db','DbController@db')->name('db');
+
+//模型操作数据库
+Route::get('mdb','DbController@mdb')->name('mdb');
