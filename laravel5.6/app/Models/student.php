@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Observers\studentObserver;
 
 class student extends Model
 {
@@ -14,4 +15,12 @@ class student extends Model
      use SoftDeletes;
      //指定删除的字段标识
      protected $dates = ['deleted_at'];
+
+
+     //事件
+     protected static function boot()
+    {
+        static::observe(studentObserver::class);
+        parent::boot();
+    }
 }

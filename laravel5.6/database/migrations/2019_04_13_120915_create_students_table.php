@@ -16,6 +16,7 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->default('')->comment('学生姓名');
+            $table->char('ip')->comment('ip地址');
             $table->timestamps();
             $table->softDeletes();
         });
