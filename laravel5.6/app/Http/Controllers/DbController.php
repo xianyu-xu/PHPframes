@@ -68,19 +68,29 @@ class DbController extends Controller
         //查询
         // where()  orderBy() first() 单条  get()多条   value()指定字段  pluck()取指定列 count()查询总记录数
         //分页
-        $res = student::offset(1)->limit(2)->get();
+        // $res = student::offset(1)->limit(2)->get();
 
+        // dump($res);
+
+        // //修改
+        // $data = ['name'=>'我是修改的名字'];
+        // $res = student::where('id',1)->update($data);//返回影响行数
+        // dump($res);
+
+        // //删除
+        // $find = student::find(2);
+        // $res = $find->delete();//返回布尔值
+        // dump($res);
+        //软删除
+        //在模型中设置
+        dump(student::destroy(1));
+
+        //读取软删除的数据
+        $res = student::onlyTrashed()->where('id',1)->first();
         dump($res);
 
-        //修改
-        $data = ['name'=>'我是修改的名字'];
-        $res = student::where('id',1)->update($data);//返回影响行数
-        dump($res);
-
-        //删除
-        $find = student::find(2);
-        $res = $find->delete();//返回布尔值
-        dump($res);
+        //回复软删除
+        dump($res->restore());
 
     }
     
