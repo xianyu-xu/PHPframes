@@ -8,7 +8,7 @@
 </head>
 <body>
     <h3>index视图</h3>
-    <p>{{ $data['name'] }}</p>
+    {{-- <p>{{ $data['name'] }}</p>
     <p>{{$data['age']}}</p>
     
     <p>{{ $data['sex'] or '没有性别' }}</p>
@@ -21,18 +21,18 @@
     <h4>青少年</h4>
     @else
     <h4>成年</h4>
-    @endif
+    @endif --}}
 
 
 
     <h1>foreach循环</h1>
 
-    @foreach($people as $key=>$value)
-        <li>{{  $key }}</li>
-        <li>{{ $value['title'] }}</li>
+    @foreach($data as $key=>$value)
+        <li>{{ $value['name'] }}</li>
     @endforeach
+    {{ $data->links() }}
     <hr>
-    <h1>forelse循环  (可以知道是否传的空数组)</h1>
+    {{-- <h1>forelse循环  (可以知道是否传的空数组)</h1>
     @forelse($people as $key=>$value)
         <li>{{ $value['title'] }}</li>
     @empty
@@ -43,6 +43,6 @@
         <li>{{ $value['title'] }}</li>
     @empty
         <li>没有数据</li>
-    @endforelse
+    @endforelse --}}
 </body>
 </html>

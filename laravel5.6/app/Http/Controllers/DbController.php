@@ -81,6 +81,8 @@ class DbController extends Controller
         // $find = student::find(2);
         // $res = $find->delete();//返回布尔值
         // dump($res);
+
+
         //软删除
         //在模型中设置
         dump(student::destroy(1));
@@ -92,6 +94,12 @@ class DbController extends Controller
         //回复软删除
         dump($res->restore());
 
+    }
+
+    public function fy(Request $request)
+    {
+        $data = student::paginate(3);
+        return view('html.index',compact('data'));
     }
     
 }

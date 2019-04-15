@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,3 +88,7 @@ Route::get('ext','HtmlController@extend');
 
 //模型操作数据库
 Route::get('mdb','DbController@mdb')->name('mdb');
+
+
+//分页数据查询
+Route::get('fy','DbController@fy')->name('fy');
