@@ -1,11 +1,8 @@
 <?php
 
+//缓存
+Route::get('cache','Admin\CacheController@index');
+Route::get('up','Admin\FileController@index');
 
-Route::group(['prefix'=>'admin','namespace'=>'admin'],function(){
-
-    //登录显示
-    Route::get('login','LoginController@index')->name('admin.login.index');
-
-    //登录验证
-    Route::post('login','LoginController@login')->name('admin.login.login');
-});
+//引入后台登录
+include base_path('routes/admin/admin.php');

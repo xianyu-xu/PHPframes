@@ -2,30 +2,28 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
-use App\Models\User;
 
-class LoginController extends Controller
-{
-    //登录
-    public function index()
-    {
+class LoginController extends Controller {
+
+    // 登录界面
+    public function index() {
+        // 如果用户已经登录则直接跳转到后台首页
+        if(auth()->check()){
+            return redirect(route('admin.index'));
+        }
+
         return view('admin.login.index');
     }
 
-    //登录验证
-    public function login(LoginRequest $request)
-    {
-        if((new User())->login($request->all()))
-        {
-            dump(session('admin.user'));
+    // 登录处理 
+    public function login(LoginRequest $request) {
+        if (auth()->attempt($request->only(['username', 'password']))) {
+            // 登录成功
+            return redirect()->route('admin.index')->with('msg','登录成功');
         }
-        else
-        {
-            return redirect()->back()->with('error','登录失败，重新登录');
-        }
+        return redirect()->back()->withErrors(['errors' => '登录不合法']);
     }
-
 }

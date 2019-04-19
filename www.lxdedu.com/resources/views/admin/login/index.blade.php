@@ -22,7 +22,6 @@
 </head>
 <body>
 <input type="hidden" id="TenantId" name="TenantId" value="" />
-<div class="header"></div>
 <div class="loginWraper">
   <div id="loginform" class="loginBox">
         @include('layout.mes')
@@ -66,6 +65,7 @@
 <div class="footer">北华大学 软件工程 刘旭东</div>
 <script type="text/javascript" src="/admin/lib/jquery/1.9.1/jquery.min.js"></script> 
 <script type="text/javascript" src="/admin/static/h-ui/js/H-ui.min.js"></script>
+{{-- 验证码刷新 --}}
 <script>
     $('#kanbuq').click(()=>{
         let vimg = $('#vimg');
