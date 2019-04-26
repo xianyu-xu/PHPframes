@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Role;
+
 class UserController extends Controller
 {
     //列表
@@ -33,6 +35,11 @@ class UserController extends Controller
 
     }
 
+    //给用户分配角色
+    public function addrole(User $user)
+    {
+        dump($user->role());
+    }
 
     //修改
     // 显示

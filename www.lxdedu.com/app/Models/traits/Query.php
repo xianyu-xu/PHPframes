@@ -13,10 +13,10 @@ trait Query {
         // 得到了排序的字段序号和排序的规则
         $order = $request->get('order')[0];
         // 以序号为数组的字段
-        $dir = $request->get('columns')[$order['column']]['data'];
-
-        $start = $request->get('start');
-        $limit = $request->get('length');
+        $dir = !empty($request->get('columns')[$order['column']]['data'])?$request->get('columns')[$order['column']]['data']:'id';
+        
+        $start = !empty($request->get('start'))?$request->get('start'):0;
+        $limit = !empty($request->get('length'))?$request->get('length'):1;
 
         $map = [];
         if ($kw) {
@@ -29,7 +29,7 @@ trait Query {
             'draw' => $request->get('draw'),
             'recordsTotal' => $query->count(),
             'recordsFiltered' => $query->count(),
-            'data' => $query->orderBy($dir,$order['dir'])->offset($start)->limit($limit)->withTrashed()->get(),
+            'data' => $query->orderBy($dir,$order['dir'])->offset($start)->limit($limit)->get(),
         ];
     }
 }

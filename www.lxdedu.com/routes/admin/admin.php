@@ -38,4 +38,25 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>['CheckLogin:
 
     //ajax请求
     Route::get('user/list','UserController@list')->name('admin.user.list');
+    //给用户分配角色
+    Route::get('user/addrole/{user}','UserController@addrole')->name('admin.user.addrole');
+
+    //角色管理
+    Route::get('user/role','RoleController@index')->name('admin.user.role');
+    Route::get('user/role/list','RoleController@list')->name('admin.user.role.list');
+    Route::resource('role','RoleController');
+
+    //给角色分配权限
+    Route::post('user/role/addauth/{role}','RoleController@addauth')->name('admin.user.role.addauth');
+   
+
+
+    //权限管理
+    Route::get('user/permission','PermissionController@index')->name('admin.user.permission');
+    Route::get('user/permission/list','PermissionController@list')->name('admin.user.permission.list');
+    Route::resource('permission','PermissionController');
+    //权限添加
+    Route::get('user/permission/add','PermissionController@create')->name('admin.user.permission.add');
+    Route::post('user/permission/store','PermissionController@store')->name('admin.user.permission.store');
+
 });

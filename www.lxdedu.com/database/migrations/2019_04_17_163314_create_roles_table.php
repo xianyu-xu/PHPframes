@@ -20,6 +20,11 @@ class CreateRolesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+        Schema::create('role_permission', function (Blueprint $table) {
+            $table->unsignedInteger('rid')->default(0)->comment('角色id');
+            $table->unsignedInteger('pid')->default(0)->comment('权限id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -30,5 +35,6 @@ class CreateRolesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('roles');
+        Schema::dropIfExists('role_permission');
     }
 }

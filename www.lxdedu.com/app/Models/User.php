@@ -75,4 +75,10 @@ class User extends Auth_user
      public function getCreatedAtAttribute($value) {
         return date('Y年m月d日 H时i分s秒', strtotime($value));
     }
+
+    //属于关系
+    public function role()
+    {
+        return $this->belongsTo(Role::class,'role_id','id');
+    }
 }

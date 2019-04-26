@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\traits\Query;
+use App\Observers\permissionObserver;
 
 /**
  * App\Models\permission
@@ -24,4 +26,16 @@ namespace App\Models;
 class permission extends Base
 {
     //
+    use Query;
+    
+    protected $table = 'permissions';
+    protected $dates   = ['deleted_at'];
+
+    protected $guarded = [];
+
+    protected static function boot()
+    {
+        static::observe(permissionObserver::class);
+        parent::boot();
+    }
 }
