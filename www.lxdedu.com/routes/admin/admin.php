@@ -39,7 +39,8 @@ Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>['CheckLogin:
     //ajax请求
     Route::get('user/list','UserController@list')->name('admin.user.list');
     //给用户分配角色
-    Route::get('user/addrole/{user}','UserController@addrole')->name('admin.user.addrole');
+    Route::get('user/role/{user}','UserController@role')->name('admin.user.role');
+    Route::post('user/addrole/{user}','UserController@addrole')->name('admin.user.addrole');
 
     //角色管理
     Route::get('user/role','RoleController@index')->name('admin.user.role');

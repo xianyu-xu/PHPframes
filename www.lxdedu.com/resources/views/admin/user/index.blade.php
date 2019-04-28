@@ -107,7 +107,7 @@ $(function(){
 								<a style="text-decoration:none" class="ml-5" onClick="change_password('修改密码','change-password.html','10001','600','270')" href="javascript:;" title="修改密码">
 									<i class="Hui-iconfont">&#xe63f;</i>
 								</a> 
-								<a href="/admin/user/addrole/${data.id}" class="btn size-S btn-primary-outline radius">分配角色</a>
+								<a href="/admin/user/role/${data.id}" class="btn size-S btn-primary-outline radius">分配角色</a>
 								<a class="delbtn" title="删除" href="/admin/user/del/${data.id}" onclick="" class="ml-5" style="text-decoration:none">
 									<i class="Hui-iconfont">&#xe6e2;</i>
 								</a>`;

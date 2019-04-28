@@ -36,9 +36,18 @@ class UserController extends Controller
     }
 
     //给用户分配角色
-    public function addrole(User $user)
+    public function role(User $user)
     {
-        dump($user->role());
+        $roles = Role::get();
+        return view('admin.user.role',compact('user','roles'));
+    }
+
+
+    public function addrole(Request $request,User $user)
+    {
+        $ids=request()->post('ids');
+        $user->role->sync([$ids]);
+        return redirect(route('admin.user.index'));
     }
 
     //修改
