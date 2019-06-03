@@ -1,6 +1,6 @@
 #1.隐藏index.php
-```
-	1. deny from all #apache
+```php
+1. deny from all #apache
 2. tp5默认 规则 #apache
 <IfModule mod_rewrite.c>
   Options +FollowSymlinks -Multiviews
