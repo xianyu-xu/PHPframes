@@ -1,7 +1,8 @@
 #1.隐藏index.php
+
+  1. deny from all #apache
+  2. tp5默认 规则 #apache
 ```php
-1. deny from all #apache
-2. tp5默认 规则 #apache
 <IfModule mod_rewrite.c>
   Options +FollowSymlinks -Multiviews
   RewriteEngine On
@@ -9,7 +10,10 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
 </IfModule>
-3.phpstudy 规则 #apache
+```
+  3.phpstudy 规则 #apache
+
+```php
 <IfModule mod_rewrite.c>
   Options +FollowSymlinks -Multiviews
   RewriteEngine On
@@ -17,8 +21,10 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^(.*)$ index.php [L,E=PATH_INFO:$1]
 </IfModule>
-4,nginx
-配置 Nginx.conf 中添加:
+```
+  4,nginx配置 Nginx.conf 中添加:
+
+```php
 loaction /{ //....省略部分代码
       if(!-e $request_filename){
               rewrite ^(.*)$ /index.php?s=/$1 last;
